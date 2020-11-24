@@ -6,8 +6,4 @@
     <p>number of seniors: {{ seniors.count }}</p>
     <p>number of sophomores: {{ sophomores.count }}</p>
     <p>avg GPA: {{ gpa__avg }}</p>
-
-    {% for student in students %}
-        <li>{{ student.last_name }}</li>
-    {% endfor %}
 {% endblock %}

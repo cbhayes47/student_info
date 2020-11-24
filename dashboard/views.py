@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView # Import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Avg
 from .models import Student
@@ -17,3 +17,9 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         context['seniors'] = Student.objects.filter(year='Senior')
         context['sophomores'] = Student.objects.filter(year='Sophomore')
         return context
+
+
+class StudentListView(LoginRequiredMixin, ListView):
+    paginate_by = 10
+    model = Student
+    template_name = 'students.html'
