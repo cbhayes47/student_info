@@ -24,19 +24,19 @@
 
     <table>
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Major</th>
-            <th>Year</th>
-            <th>GPA</th>
+            <th>Title</th>
+            <th>Name</th>
+            <th>Course Section Code</th>
+            <th>Course Department</th>
+            <th>Instructor</th>
         </tr>
-    {% for student in student_list %}
+    {% for course in course_list %}
         <tr>
-            <td>{{ student.first_name }}</td>
-            <td>{{ student.last_name }}</td>
-            <td>{{ student.major }}</td>
-            <td>{{ student.year }}</td>
-            <td>{{ student.gpa }}</td>
+            <td>{{ course.title }}</td>
+            <td>{{ course.name }}</td>
+            <td>{{ course.course_section_code }}</td>
+            <td>{{ course.course_department }}</td>
+            <td>{{ course.instructor }}</td>
         </tr>
     {% endfor %}
     </table>

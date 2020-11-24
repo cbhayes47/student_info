@@ -46,6 +46,47 @@ def add_students(apps, schema_editor):
     student = Student(1020, 'Abby', 'Mathew', 'I.T.', 'Junior', 4)
     student.save()
 
+def add_courses(apps, schema_editor):
+    Course = apps.get_model("dashboard", "Course")
+    course = Course(3903, 'ECON 3903', 'Faculty Seminar Topics in Entr', 1, 'Economics', 'Lerner,Josh')
+    course.save()
+    course = Course(107349, 'MODMDEST 100', 'Intro Modern Middle East', 1, 'Near Eastern Languages & Civ', 'Zeghal,Malika')
+    course.save()
+    course = Course(107368, 'PHYSCI 11', 'Frontiers of Modern Chemistry', 1, 'Chemistry & Chemical Biology', 'Anderson,James G.')
+    course.save()
+    course = Course(107375, 'IT 105', 'Fundamentals of I.T', 2, 'I.T.', 'Delacy,Richard Somers')
+    course.save()
+    course = Course(107378, 'SAS 100R', 'South Asian Language Tutorials', 1, 'South Asian Studies', 'Delacy,Richard Somers')
+    course.save()
+    course = Course(107380, 'SAS 98R', 'Tutorial - Junior Year', 1, 'South Asian Studies', 'Delacy,Richard Somers')
+    course.save()
+    course = Course(107425, 'ECON 1450', 'Religion and Political Economy', 1, 'Economics', 'Barro,Robert J.')
+    course.save()
+    course = Course(107451, 'PSY 1502', 'Cultural Psychology', 1, 'Psychology', 'Kimel,Sasha Y.')
+    course.save()
+    course = Course(107455, 'CELLBIO 307QC', 'Chromatin Dynamics', 1, 'Medical Sciences', 'Mostoslavsky,Raul')
+    course.save()
+    course = Course(107600, 'APMTH 221', 'Advanced Optimization', 1, 'Applied Mathematics', 'Kyng,Rasmus')
+    course.save()
+    course = Course(107602, 'PSY 1503', 'Psych of Close Relationships', 1, 'Psychology', 'Parker,Holly Ann')
+    course.save()
+    course = Course(107628, 'DRB 322', 'Regulation of Tissue Stem Cell', 1, 'Medical Sciences', 'Breault,David T.')
+    course.save()
+    course = Course(107630, 'GENETIC 397', 'Immunogenomics', 1, 'Medical Sciences', 'Raychaudhuri,Soumya')
+    course.save()
+    course = Course(107672, 'PERSIAN 152', 'Persian Epic Tradition', 1, 'Near Eastern Languages & Civ', 'Landau,Justine Karen')
+    course.save()
+    course = Course(107703, 'CHEM 320', 'Chemical Biology', 1, 'Chemistry & Chemical Biology', 'Balskus,Emily Patricia')
+    course.save()
+    course = Course(107706, 'PSY 2410R', 'Lab Research Emotional Disorde', 1, 'Psychology', 'McNally,Richard J.')
+    course.save()
+    course = Course(107746, 'NEUROBIO 355', 'A Biophysical Approach to Syst', 1, 'Medical Sciences', 'Do,Michael Tri Hoang')
+    course.save()
+    course = Course(107761, 'GENETIC 395', 'Regulation of global genes', 1, 'Medical Sciences', 'Churchman,Stirling')
+    course.save()
+    course = Course(107764, 'ENG-SCI 265', 'Advanced Water Treatment', 1, 'Engineering Sciences', 'Vecitis,Chad D.')
+    course.save()
+
 
 class Migration(migrations.Migration):
 
@@ -54,5 +95,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RunPython(add_courses),
         migrations.RunPython(add_students),
     ]
