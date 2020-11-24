@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form method="POST" action = "select_student">{% csrf_token %}
+        <label for="pk">Choose student</label>
+        <select type="text" id="pk" name="pk">
+            {% for student in students %}
+                <option value="{{ student.id }}">{{ student.last_name }}, {{ student.first_name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Select Student"/>
+    </form>
+
+    {% block enrollment_content %}
+    {% endblock %}
+
+{% endblock %}

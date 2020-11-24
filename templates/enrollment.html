@@ -1,0 +1,11 @@
+{% extends 'enrollment_base.html' %}
+
+{% block enrollment_content %}
+
+    {{ object.first_name }}
+    {{ object.last_name }}
+    {{ object.major }}
+    {{ object.year }}
+    {{ object.gpa }}
+
+{% endblock %}
