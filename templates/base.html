@@ -16,6 +16,11 @@
                 <li><a href="{% url 'courses' %}">Courses</a></li>
                 <li><a href="{% url 'enrollment' %}">Enrollment</a></li>
             </ul>
+            {% if not user.is_anonymous %}
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+            {% endif %}
           </div>
         </nav>
         <div class="content container">
