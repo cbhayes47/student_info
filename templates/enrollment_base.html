@@ -6,7 +6,10 @@
         <label for="pk">Choose student</label>
         <select type="text" id="pk" name="pk">
             {% for student in students %}
-                <option value="{{ student.id }}">{{ student.last_name }}, {{ student.first_name }}</option>
+                <option
+                    {% if student.id == object.id %} selected {% endif %}
+                    value="{{ student.id }}"
+                >{{ student.last_name }}, {{ student.first_name }}</option>
             {% endfor %}
         </select>
         <input type="submit" value="Select Student"/>

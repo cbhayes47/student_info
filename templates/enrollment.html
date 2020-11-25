@@ -9,31 +9,43 @@
 
     <form method="POST" action = "enroll">{% csrf_token %}
 
-        <label for="enroll">Change Enrolled Courses</label>
+        <label for="enroll"><h2>Change Enrolled Courses</h2></label>
         <p>Course 1: {{ object.course1.name }}
-        <select type="text" id="course1" name="course1">
+        <select type="text" id="course1" name="course1" onChange="form.submit();">
             <option value="-1">None</option>
             {% for course in courses %}
-                <option value="{{ course.id }}">{{ course.name }}</option>
+                {% if course != object.course2 and course != object.course3 %}
+                    <option
+                        value="{{ course.id }}"
+                        {% if course == object.course1 %} selected {% endif %}
+                    >{{ course.name }}</option>
+                {% endif %}
             {% endfor %}
         </select></p>
         <p>Course 2: {{ object.course2.name }}
-        <select type="text" id="course2" name="course2">
+        <select type="text" id="course2" name="course2" onChange="form.submit();">
             <option value="-1">None</option>
             {% for course in courses %}
-                <option value="{{ course.id }}">{{ course.name }}</option>
+                {% if course != object.course1 and course != object.course3 %}
+                    <option
+                        value="{{ course.id }}"
+                        {% if course == object.course2 %} selected {% endif %}
+                    >{{ course.name }}</option>
+                {% endif %}
             {% endfor %}
         </select></p>
         <p>Course 3: {{ object.course3.name }}
-        <select type="text" id="course3" name="course3">
+        <select type="text" id="course3" name="course3" onChange="form.submit();">
             <option value="-1">None</option>
             {% for course in courses %}
-                <option value="{{ course.id }}">{{ course.name }}</option>
+                {% if course != object.course1 and course != object.course2 %}
+                    <option
+                        value="{{ course.id }}"
+                        {% if course == object.course3 %} selected {% endif %}
+                    >{{ course.name }}</option>
+                {% endif %}
             {% endfor %}
         </select></p>
-
-        <input type="submit" value="Submit"/>
-
     </form>
 
 {% endblock %}
