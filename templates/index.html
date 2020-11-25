@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <p>number of students: {{ students.count }}</p>
-    <p>number of juniors: {{ juniors.count }}</p>
-    <p>number of seniors: {{ seniors.count }}</p>
-    <p>number of sophomores: {{ sophomores.count }}</p>
-    <p>avg GPA: {{ gpa__avg }}</p>
+    <table class="table table-condensed">
+        <tr><th>number of students</th> <td>{{ students.count }}</td></tr>
+        <tr><th>number of juniors</th> <td>{{ juniors.count }}</td></tr>
+        <tr><th>number of seniors</th> <td>{{ seniors.count }}</td></tr>
+        <tr><th>number of sophomores</th> <td>{{ sophomores.count }}</td></tr>
+        <tr><th>avg GPA</th> <td>{{ gpa__avg }}</td></tr>
+    </table>
 {% endblock %}

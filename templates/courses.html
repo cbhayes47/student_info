@@ -22,14 +22,16 @@
         </div>
     </p>
 
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Name</th>
-            <th>Course Section Code</th>
-            <th>Course Department</th>
-            <th>Instructor</th>
-        </tr>
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Name</th>
+                <th>Course Section Code</th>
+                <th>Course Department</th>
+                <th>Instructor</th>
+            </tr>
+        </thead>
     {% for course in course_list %}
         <tr>
             <td>{{ course.title }}</td>

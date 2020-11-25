@@ -2,15 +2,10 @@
 
 {% block enrollment_content %}
 
-    <p>{{ object.first_name }} {{ object.last_name }}</p>
-    <p>{{ object.major }} {{ object.year }}</p>
-    <p>GPA: {{ object.gpa }}</p>
-    <br>
-
     <form method="POST" action = "enroll">{% csrf_token %}
 
-        <label for="enroll"><h2>Change Enrolled Courses</h2></label>
-        <p>Course 1: {{ object.course1.name }}
+        <label for="enroll">Enrolled Courses</label>
+        <p>Course 1:
         <select type="text" id="course1" name="course1" onChange="form.submit();">
             <option value="-1">None</option>
             {% for course in courses %}
@@ -22,7 +17,7 @@
                 {% endif %}
             {% endfor %}
         </select></p>
-        <p>Course 2: {{ object.course2.name }}
+        <p>Course 2:
         <select type="text" id="course2" name="course2" onChange="form.submit();">
             <option value="-1">None</option>
             {% for course in courses %}
@@ -34,7 +29,7 @@
                 {% endif %}
             {% endfor %}
         </select></p>
-        <p>Course 3: {{ object.course3.name }}
+        <p>Course 3:
         <select type="text" id="course3" name="course3" onChange="form.submit();">
             <option value="-1">None</option>
             {% for course in courses %}

@@ -3,8 +3,8 @@
 {% block content %}
 
     <form method="POST" action = "select_student">{% csrf_token %}
-        <label for="pk">Choose student</label>
-        <select type="text" id="pk" name="pk">
+        <label for="pk">Student</label>
+        <select type="text" id="pk" name="pk" onChange="form.submit();">
             {% for student in students %}
                 <option
                     {% if student.id == object.id %} selected {% endif %}
@@ -12,7 +12,6 @@
                 >{{ student.last_name }}, {{ student.first_name }}</option>
             {% endfor %}
         </select>
-        <input type="submit" value="Select Student"/>
     </form>
 
     {% block enrollment_content %}

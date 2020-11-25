@@ -2,15 +2,22 @@
 <html>
     <head>
         <title>Student Information</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     </head>
     <body>
-        <div class="page-header">
-            <h1><a href="/">Student Information</a></h1>
-            <span><a href="{% url 'dashboard' %}">Dashboard</a></span>
-            <span><a href="{% url 'students' %}">Students</a></span>
-            <span><a href="{% url 'courses' %}">Courses</a></span>
-            <span><a href="{% url 'enrollment' %}">Enrollment</a></span>
-        </div>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="{% url 'dashboard' %}">Student Information</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'students' %}">Students</a></li>
+                <li><a href="{% url 'courses' %}">Courses</a></li>
+                <li><a href="{% url 'enrollment' %}">Enrollment</a></li>
+            </ul>
+          </div>
+        </nav>
         <div class="content container">
             <div class="row">
                 <div class="col-md-8">
