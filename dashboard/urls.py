@@ -12,4 +12,5 @@ urlpatterns = [
     path(r'enrollment/select_student', views.SelectStudentView),
     re_path(r'enrollment/[0-9]+/select_student', views.SelectStudentView),
     path(r'enrollment/<int:pk>/', views.StudentDetailView.as_view(), name='enrollment_pk'),
+    path(r'enrollment/<int:pk>/enroll', views.EnrollView),
 ]

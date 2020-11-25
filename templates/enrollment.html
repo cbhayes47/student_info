@@ -2,10 +2,38 @@
 
 {% block enrollment_content %}
 
-    {{ object.first_name }}
-    {{ object.last_name }}
-    {{ object.major }}
-    {{ object.year }}
-    {{ object.gpa }}
+    <p>{{ object.first_name }} {{ object.last_name }}</p>
+    <p>{{ object.major }} {{ object.year }}</p>
+    <p>GPA: {{ object.gpa }}</p>
+    <br>
+
+    <form method="POST" action = "enroll">{% csrf_token %}
+
+        <label for="enroll">Change Enrolled Courses</label>
+        <p>Course 1: {{ object.course1.name }}
+        <select type="text" id="course1" name="course1">
+            <option value="-1">None</option>
+            {% for course in courses %}
+                <option value="{{ course.id }}">{{ course.name }}</option>
+            {% endfor %}
+        </select></p>
+        <p>Course 2: {{ object.course2.name }}
+        <select type="text" id="course2" name="course2">
+            <option value="-1">None</option>
+            {% for course in courses %}
+                <option value="{{ course.id }}">{{ course.name }}</option>
+            {% endfor %}
+        </select></p>
+        <p>Course 3: {{ object.course3.name }}
+        <select type="text" id="course3" name="course3">
+            <option value="-1">None</option>
+            {% for course in courses %}
+                <option value="{{ course.id }}">{{ course.name }}</option>
+            {% endfor %}
+        </select></p>
+
+        <input type="submit" value="Submit"/>
+
+    </form>
 
 {% endblock %}

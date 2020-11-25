@@ -3,7 +3,7 @@ from django.views.generic import TemplateView, ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Avg
 from .models import Student, Course
-from .forms import StudentForm
+from .forms import StudentForm, EnrollForm
 
 class DashboardView(LoginRequiredMixin, TemplateView):
     login_url = '/accounts/login/'
@@ -50,6 +50,7 @@ class StudentDetailView(LoginRequiredMixin, DetailView):
         context = super().get_context_data(**kwargs)
 
         context['students'] = Student.objects.all()
+        context['courses'] = Course.objects.all()
         return context
 
  
@@ -62,6 +63,32 @@ def SelectStudentView(request):
             pk = form.cleaned_data['pk']
             return redirect('enrollment_pk', pk=pk)
         else:
-            return redirect('students')
+            return redirect('enrollment')
+    else:
+        return redirect('enrollment')
+
+
+def get_course(form, number):
+    pk = form.cleaned_data['course' + str(number)]
+    if pk == -1:
+        return None
+    return Course.objects.get(pk=pk)
+
+
+def EnrollView(request, pk=None):
+ 
+    if request.method == 'POST':
+        form = EnrollForm(request.POST)
+ 
+        if form.is_valid():
+            student = Student.objects.get(id=pk)
+            student.course1 = get_course(form, 1)
+            student.course2 = get_course(form, 2)
+            student.course3 = get_course(form, 3)
+            student.save()
+            return redirect('enrollment_pk', pk=pk)
+        else:
+            print(f'form {form} is invalid')
+            return redirect('enrollment')
     else:
         return redirect('enrollment')
